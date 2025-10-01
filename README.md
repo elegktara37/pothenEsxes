@@ -3,4 +3,4 @@
 Python Script for downloading all Asset Declaration (Pothen Esxes) from Hellenic Parliament Official Site
 https://www.hellenicparliament.gr/
 
-Including years 2019-2021
+Including years 2019-2023
