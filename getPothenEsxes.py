@@ -5,14 +5,19 @@ from urllib.parse import urlparse
 
 # List of URLs containing PDF links
 page_urls = [
+    "https://www.hellenicparliament.gr/Organosi-kai-Leitourgia/epitropi-elegxou-ton-oikonomikon-ton-komaton-kai-ton-vouleftwn/Diloseis-Periousiakis-Katastasis2024/Arxikes-Diloseis-Periousiakis-Katastasis2024",
+    "https://www.hellenicparliament.gr/Organosi-kai-Leitourgia/epitropi-elegxou-ton-oikonomikon-ton-komaton-kai-ton-vouleftwn/Diloseis-Periousiakis-Katastasis2024/Ethsies-Diloseis-Periousiakis-Katastasis2024",
+    "https://www.hellenicparliament.gr/Organosi-kai-Leitourgia/epitropi-elegxou-ton-oikonomikon-ton-komaton-kai-ton-vouleftwn/Diloseis-Periousiakis-Katastasis2023/Arxikes-Diloseis-Periousiakis-Katastasis2023",
+    "https://www.hellenicparliament.gr/Organosi-kai-Leitourgia/epitropi-elegxou-ton-oikonomikon-ton-komaton-kai-ton-vouleftwn/Diloseis-Periousiakis-Katastasis2023/Ethsies-Diloseis-Periousiakis-Katastasis2023",
     "https://www.hellenicparliament.gr/Organosi-kai-Leitourgia/epitropi-elegxou-ton-oikonomikon-ton-komaton-kai-ton-vouleftwn/Diloseis-Periousiakis-Katastasis2022",
     "https://www.hellenicparliament.gr/Organosi-kai-Leitourgia/epitropi-elegxou-ton-oikonomikon-ton-komaton-kai-ton-vouleftwn/Diloseis-Periousiakis-Katastasis2021",
     "https://www.hellenicparliament.gr/Organosi-kai-Leitourgia/epitropi-elegxou-ton-oikonomikon-ton-komaton-kai-ton-vouleftwn/Diloseis-Periousiakis-Katastasis2020",
     "https://www.hellenicparliament.gr/Organosi-kai-Leitourgia/epitropi-elegxou-ton-oikonomikon-ton-komaton-kai-ton-vouleftwn/Diloseis-Periousiakis-Katastasis2019"
 ]
 
-# Main download folder
-base_folder = "all_downloads"
+# Get the current user's home directory and Downloads folder
+downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
+base_folder = os.path.join(downloads_path, "Pothen_Esxes")
 os.makedirs(base_folder, exist_ok=True)
 
 for page_url in page_urls:
@@ -54,5 +59,6 @@ for page_url in page_urls:
         pdf_response = requests.get(pdf_url)
         with open(pdf_name, "wb") as pdf_file:
             pdf_file.write(pdf_response.content)
+
 
 print("\nAll PDFs downloaded (skipping existing ones).")
